@@ -221,11 +221,11 @@ const MessagePage = () => {
                     />
                   )}
                 </div>
-                <p className="px-2 w-fit">{msg.text}</p>
+                <p className="px-2 break-words">{msg.text}</p>
                 <p className="text-xs ml-auto w-fit">
                   {moment(msg.createdAt).format("hh:mm")}
                 </p>
-              </div> 
+              </div>
             );
           })}
         </div>

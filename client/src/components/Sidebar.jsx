@@ -10,6 +10,8 @@ import { logout } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { FiArrowUpLeft } from "react-icons/fi";
 import SearchUser from "./SearchUser";
+import { FaImage } from "react-icons/fa6";
+import { FaVideo } from "react-icons/fa6";
 
 
 
@@ -172,7 +174,7 @@ const Sidebar = () => {
                         </div>
                       )}
                     </div>
-                    <p className="text-ellipsis line-clamp-1">
+                    <p className="overflow-hidden text-ellipsis whitespace-nowrap max-w-[150px]">
                       {conv?.lastMsg?.text}
                     </p>
                   </div>
