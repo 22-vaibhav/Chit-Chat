@@ -106,9 +106,17 @@ const MessagePage = () => {
   useEffect(() => {
     if (socketConnection) {
       socketConnection.emit("message-page", params.userId);
+
+      socketConnection.emit("seen", params.userId);
+
       socketConnection.on("message-user", (data) => {
         // console.log("user details", data);
         setDataUser(data);
+      });
+
+      socketConnection.on("message", (data) => {
+        console.log("message data", data);
+        setAllMessage(data);
       });
     }
   }, [socketConnection, params?.userId, user]);
@@ -213,11 +221,11 @@ const MessagePage = () => {
                     />
                   )}
                 </div>
-                <p className="px-2">{msg.text}</p>
+                <p className="px-2 w-fit">{msg.text}</p>
                 <p className="text-xs ml-auto w-fit">
                   {moment(msg.createdAt).format("hh:mm")}
                 </p>
-              </div>
+              </div> 
             );
           })}
         </div>
