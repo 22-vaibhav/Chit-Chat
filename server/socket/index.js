@@ -1,5 +1,6 @@
 const express = require("express");
 const { Server } = require("socket.io");
+const cors = require("cors");
 const http = require("http");
 const getUserDetailsFromToken = require("./../helpers/getUserDetailsFromToken");
 const userModel = require("../models/userModel");
@@ -13,9 +14,10 @@ const app = express();
 
 // Socket connection
 const server = http.createServer(app);
-const io = new Server(server, {
+const io = require("socket.io")(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: "https://chit-chat-front.vercel.app",
+    methods: ["GET", "POST"],
     credentials: true,
   },
 });

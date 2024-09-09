@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
+    origin: "https://chit-chat-front.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true, // If you need to send cookies with requests
   })
 );
 
