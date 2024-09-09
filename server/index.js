@@ -32,7 +32,7 @@ app.use('/api', router)
 
 connectDB().then(() => {
   console.log("Connection Successful");
-  server.listen(PORT, () => {
-    console.log(`Server running at port ${PORT}`);
+  server.listen(8000, () => {
+    console.log(`Server running`);
   });
 });
