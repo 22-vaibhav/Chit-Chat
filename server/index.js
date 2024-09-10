@@ -10,13 +10,12 @@ const router = require('./router/index')
 // const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.use(
-  cors({
-    origin: "https://chit-chat-front.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true, // If you need to send cookies with requests
-  })
-);
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true, // Use 'http' instead of 'https'
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookiesParser());
@@ -32,7 +31,7 @@ app.use('/api', router)
 
 connectDB().then(() => {
   console.log("Connection Successful");
-  server.listen(8000, () => {
-    console.log(`Server running`);
+  server.listen(PORT, () => {
+    console.log(`Server running at port ${PORT}`);
   });
 });
